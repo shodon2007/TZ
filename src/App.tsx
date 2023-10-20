@@ -1,10 +1,15 @@
 import SearchInput from "./components/SearchInput";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import useGetUsers from "./hooks/useGetUsers";
 import UserList from "./components/UserList";
 
 const App: FC = () => {
-    const { data, isLoading, error } = useGetUsers();
+    const [search, setSearch] = useState("");
+    const { data, isLoading, error, refetch } = useGetUsers(search);
+
+    useEffect(() => {
+        refetch();
+    }, [search]);
 
     if (isLoading) {
         return <div>Загрузка...</div>;
@@ -16,7 +21,7 @@ const App: FC = () => {
 
     return (
         <div className="app">
-            <SearchInput />
+            <SearchInput setSearch={setSearch} />
             <UserList list={data} />
         </div>
     );
