@@ -2,9 +2,15 @@ import SearchInput from "./components/SearchInput";
 import { FC, useEffect, useState } from "react";
 import useGetUsers from "./hooks/useGetUsers";
 import UserList from "./components/UserList";
+import Modal from "./components/UI/modal/Modal";
+import { TypeModal } from "./types/modal";
 
 const App: FC = () => {
     const [search, setSearch] = useState("");
+    const [modal, setModal] = useState<TypeModal>({
+        active: false,
+        user: false,
+    });
     const { data, isLoading, error, refetch } = useGetUsers(search);
 
     useEffect(() => {
@@ -22,7 +28,8 @@ const App: FC = () => {
     return (
         <div className="app">
             <SearchInput setSearch={setSearch} />
-            <UserList list={data} />
+            <UserList list={data} setModal={setModal} />
+            <Modal modal={modal} setModal={setModal} />
         </div>
     );
 };

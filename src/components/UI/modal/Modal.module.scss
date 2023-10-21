@@ -1,0 +1,67 @@
+.modal {
+    left: 0;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: -1;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.modal.active {
+    display: flex;
+    z-index: 10;
+    background-color: rgba(188, 195, 208, 0.5);
+}
+
+.body {
+    background-color: white;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 40px;
+    width: 500px;
+    border-radius: 16px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > img {
+        cursor: pointer;
+    }
+}
+
+.center {
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+        vertical-align: top;
+    }
+
+    td:nth-child(2) {
+        padding-left: 40px;
+    }
+
+    td {
+        padding-bottom: 14px;
+    }
+
+    tr:last-child td {
+        padding-bottom: 0;
+    }
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
